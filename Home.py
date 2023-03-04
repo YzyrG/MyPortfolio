@@ -1,3 +1,7 @@
+"""
+Home page
+"""
+
 import streamlit as st
 import pandas  # 用来读data.csv
 
@@ -20,9 +24,10 @@ with column2:
     st.info(content_1)
 
 content_2 = """
-    欢迎参观我的个人网站！下面是我做过的一些Python项目, Feel free to contact me. (^-^)\n
+    欢迎参观我的个人网站！下面是我做过的一些Python项目。\n
+    Feel free to contact me. (^-^)\n
     """
-st.write(content_2)
+st.subheader(content_2)
 
 # 使用Pandas读取data.csv
 data = pandas.read_csv("data.csv", sep=';')
