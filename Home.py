@@ -20,13 +20,13 @@ with column2:
     st.info(content_1)
 
 content_2 = """
-    欢迎参观我的个人网站！下面是我做过的一些Python项目, Feel free to contact me. (^-^)
+    欢迎参观我的个人网站！下面是我做过的一些Python项目, Feel free to contact me. (^-^)\n
     """
 st.write(content_2)
 
 # 使用Pandas读取data.csv
 data = pandas.read_csv("data.csv", sep=';')
-column3, empty_column, column4 = st.columns(2)
+column3,  column4 = st.columns(2)
 
 with column3:
     for index, row in data[:10].iterrows():  # title, description, url, image与相应数据对应起来
