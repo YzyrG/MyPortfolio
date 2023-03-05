@@ -1,21 +1,29 @@
 """
 Send email function
 """
-
+from email.mime.text import MIMEText
+from email.utils import formataddr
 import smtplib  # SMTP简单邮件传输协议
 import ssl
 
 
+def create_email(user_email, pure_message):  # 构造邮件格式
+    msg = MIMEText(pure_message, 'plain', 'utf-8')
+    msg['From'] = formataddr(('My protfolio User', user_email))
+    msg['To'] = formataddr(('ZYR', '15683966878@163.com'))
+    msg["Subject"] = f"New email from {user_email}"
+    return msg
+
+
 def send_email(message):
-    host = "smtp.gmail.com"  # 使用gmail作为SMTP服务器
+    host = "smtp.163.com"  # 使用163邮箱作为SMTP服务器
     port = 465
 
-    # 发件人邮箱地址
-    sender = "zyr724725@gmail.com"
-    password = "mvfuxlgpjbowoqbt"
+    # 发件人邮箱地址， 由sender代发
+    sender = "15683966878@163.com"
+    password = "ZSDIBOHXCOCYCYOJ"
 
-    # 收件人与发件人邮箱地址可以相同也可以不同，只要都是属于自己的gmail账号就可以
-    receiver = "zyr724725@gmail.com"
+    receiver = "15683966878@163.com"
     context = ssl.create_default_context()
 
     # 使用安全加密的SSL协议连接到SMTP服务器
