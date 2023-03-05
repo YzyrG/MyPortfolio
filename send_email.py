@@ -19,12 +19,12 @@ def send_email(message):
     host = "smtp.163.com"  # 使用163邮箱作为SMTP服务器
     port = 465
 
-    # 发件人邮箱地址， 由sender代发
+    # 代发人邮箱地址，代发人sender代替user_email发送邮件给接受邮件的receiver
     sender = "15683966878@163.com"
     password = "ZSDIBOHXCOCYCYOJ"
 
-    receiver = "15683966878@163.com"
-    context = ssl.create_default_context()
+    receiver = "2456327328@qq.com"
+    context = ssl.create_default_context()  # 返回一个新的带有安全默认设置的上下文
 
     # 使用安全加密的SSL协议连接到SMTP服务器
     with smtplib.SMTP_SSL(host, port, context=context, timeout=60) as server:

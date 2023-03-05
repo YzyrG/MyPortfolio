@@ -14,13 +14,14 @@ with st.form(key="email_contact"):  # clear_on_submit=True 按下Submit后重置
     user_email = st.text_input('Your email address', key='email')
     pure_message = st.text_area("Your message", key="message")
     receiver_email = "15683966878@163.com"
-    message = create_email(user_email, pure_message)
+    message = create_email(user_email, pure_message)  # 返回的message是MIMEText类型
+    # print(type(message))
     button = st.form_submit_button("Submit")
     # print(button)
     if button:  # 点击Submit后button值为True
         # print(button)
         try:
-            message = f"{message}"
+            message = str(message)  # 将message转换为string类型数据
             send_email(message)
             st.info("Your email was sent successfully!")
         except TimeoutError:
