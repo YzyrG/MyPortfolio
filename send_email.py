@@ -5,12 +5,13 @@ from email.mime.text import MIMEText
 from email.utils import formataddr
 import smtplib  # SMTP简单邮件传输协议
 import ssl
+import os
 
 
 def create_email(user_email, pure_message):  # 构造邮件格式
     msg = MIMEText(pure_message, 'plain', 'utf-8')
-    msg['From'] = formataddr(('My protfolio User', user_email))
-    msg['To'] = formataddr(('ZYR', '15683966878@163.com'))
+    msg['From'] = formataddr(('My Portfolio User', user_email))
+    msg['To'] = formataddr(('ZYR', '2456327328@qq.com'))
     msg["Subject"] = f"New email from {user_email}"
     return msg
 
@@ -21,7 +22,7 @@ def send_email(message):
 
     # 代发人邮箱地址，代发人sender代替user_email发送邮件给接受邮件的receiver
     sender = "15683966878@163.com"
-    password = "ZSDIBOHXCOCYCYOJ"
+    password = os.getenv("PASSWORD")
 
     receiver = "2456327328@qq.com"
     context = ssl.create_default_context()  # 返回一个新的带有安全默认设置的上下文
