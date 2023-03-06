@@ -17,9 +17,12 @@ with column1:
 with column2:
     st.header("ZYR")
     content_1 = """
-    Hi, I am Yarong Zhang！我是一名编程学习者，目前正在学习python语言&练习一些小项目。
-    我于2019年毕业于西南大学商贸学院信息管理与信息系统专业，曾在上海泛微网络科技有限公司担任测试工程师的角色，
-    主要负责公司产品e-cology系统公文模块的功能测试任务。但相比测试我更想倾向于做一名编程者，所以正在因此而努力:)
+    Hi, I am Yarong Zhang！我是一名编程学习者，
+    目前正在学习python语言&练习一些小项目。
+    我于2019年毕业于西南大学商贸学院信息管理与信息系统专业，
+    曾在上海泛微网络科技有限公司担任测试工程师的角色，
+    主要负责公司产品e-cology系统公文模块的功能测试任务。
+    但相比测试我更想倾向于做一名编程者，所以正在因此而努力:)
     """
     st.info(content_1)
 
@@ -34,11 +37,13 @@ data = pandas.read_csv("data.csv", sep=';')
 column3,  column4 = st.columns(2)
 
 with column3:
-    for index, row in data[:10].iterrows():  # title, description, url, image与相应数据对应起来
+    #  iterrows()使得各行数据与第一行相应类别对应起来
+    for index, row in data[:10].iterrows():
         st.subheader(row["title"])
         st.write(row['description'])
         st.image(f"Images/{row['image']}", width=300)
-        st.write(f"[source code]({row['url']})")  # 链接名称为source code，实际为row['url']
+        # 链接名称为source code，实际为row['url']
+        st.write(f"[source code]({row['url']})")
 
 with column4:
     for index, row in data[10:].iterrows():

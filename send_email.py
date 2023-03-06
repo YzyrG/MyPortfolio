@@ -8,7 +8,8 @@ import ssl
 import os
 
 
-def create_email(user_email, pure_message):  # 构造邮件格式
+# 构造邮件格式
+def create_email(user_email, pure_message):
     msg = MIMEText(pure_message, 'plain', 'utf-8')
     msg['From'] = formataddr(('My Portfolio User', user_email))
     msg['To'] = formataddr(('ZYR', '2456327328@qq.com'))
@@ -17,7 +18,8 @@ def create_email(user_email, pure_message):  # 构造邮件格式
 
 
 def send_email(message):
-    host = "smtp.163.com"  # 使用163邮箱作为SMTP服务器
+    # 使用163邮箱作为SMTP服务器
+    host = "smtp.163.com"
     port = 465
 
     # 代发人邮箱地址，代发人sender代替user_email发送邮件给接受邮件的receiver
@@ -25,9 +27,12 @@ def send_email(message):
     password = os.getenv("PASSWORD")
 
     receiver = "2456327328@qq.com"
-    context = ssl.create_default_context()  # 返回一个新的带有安全默认设置的上下文
+    # 返回一个新的带有安全默认设置的上下文
+    context = ssl.create_default_context()
 
     # 使用安全加密的SSL协议连接到SMTP服务器
     with smtplib.SMTP_SSL(host, port, context=context, timeout=60) as server:
-        server.login(sender, password)  # 使用password登录sender的邮箱
-        server.sendmail(sender, receiver, message)  # sender发送message给receiver
+        # 使用password登录sender的邮箱
+        server.login(sender, password)
+        # sender发送message给receiver
+        server.sendmail(sender, receiver, message)

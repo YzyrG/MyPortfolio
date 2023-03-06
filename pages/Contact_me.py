@@ -10,18 +10,20 @@ st.set_page_config(layout="wide", page_title="My Python Portfolio | ZYR ", page_
 
 st.header("Contact Me ٩(ˊᗜˋ*)و")
 
-with st.form(key="email_contact"):  # clear_on_submit=True 按下Submit后重置form为默认值
+with st.form(key="email_contact"):
     user_email = st.text_input('Your email address', key='email')
     pure_message = st.text_area("Your message", key="message")
     receiver_email = "15683966878@163.com"
-    message = create_email(user_email, pure_message)  # 返回的message是MIMEText类型
+    # 返回的message是MIMEText类型
+    message = create_email(user_email, pure_message)
     # print(type(message))
     button = st.form_submit_button("Submit")
-    # print(button)
-    if button:  # 点击Submit后button值为True
-        # print(button)
+
+    # 点击Submit后button值为True
+    if button:
         try:
-            message = str(message)  # 将message转换为string类型数据
+            # 将message转换为string类型数据
+            message = str(message)
             send_email(message)
             st.info("Your email was sent successfully!")
         except TimeoutError:
