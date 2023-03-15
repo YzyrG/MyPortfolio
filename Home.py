@@ -8,9 +8,8 @@ import requests
 
 # ----------------------------------------首页展示NASA图片-----------------------------------------------#
 # 通过api拿到图片json文件并读取
-api_key = "tnsxcGgQyfXgTMwhPTlBgSDBt0LNKyNOmzsr6FZd"
-url = "https://api.nasa.gov/planetary/apod?" \
-      f"api_key={api_key}"
+api_key = st.secrets["NASA_API"]
+url = "https://api.nasa.gov/planetary/apod?api_key={api_key}"
 headers = {'Connection': 'close'}
 
 # 不显示InsecureRequestWarning警告
@@ -69,7 +68,7 @@ with column3:
     for index, row in data[:4].iterrows():
         st.subheader(row["title"])
         st.write(row['description'])
-        st.image(f"Images/{row['image']}", width=300)
+        st.image(f"images/{row['image']}", width=300)
         # 链接名称为source code，实际为row['url']
         st.write(f"[相关链接]({row['url']})")
 
@@ -77,5 +76,5 @@ with column4:
     for index, row in data[4:].iterrows():
         st.subheader(row['title'])
         st.write(row['description'])
-        st.image(f"Images/{row['image']}", width=300)
+        st.image(f"images/{row['image']}", width=300)
         st.write(f"[相关链接]({row['url']})")
