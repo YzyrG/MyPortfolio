@@ -55,11 +55,8 @@ st.header(content_2)
 
 # 显示自我介绍
 content_1 = """
-嗨！我叫ZYR, 是一名编程学习者，目前正在学习python语言&练习一些小项目。
-我于2019年毕业于西南大学商贸学院信息管理与信息系统专业，
-曾在上海泛微网络科技有限公司担任测试工程师的角色，
-主要负责公司产品e-cology系统公文模块的功能测试任务。
-但相比测试我更想倾向于做一名可以自己开发的编程者，所以正在因此而努力:)\n\n
+嗨！我叫ZYR, 是一名编程学习者，目前正在学习Python&练习一些小项目。
+如果你也对计算机科学感兴趣的话，欢迎一起学习交流:)\n\n
 """
 st.info(content_1)
 
@@ -74,11 +71,11 @@ with column3:
         st.write(row['description'])
         st.image(f"Images/{row['image']}", width=300)
         # 链接名称为source code，实际为row['url']
-        st.write(f"[source code]({row['url']})")
+        st.write(f"[相关链接]({row['url']})")
 
 with column4:
     for index, row in data[4:].iterrows():
         st.subheader(row['title'])
         st.write(row['description'])
         st.image(f"Images/{row['image']}", width=300)
-        st.write(f"[source code]({row['url']})")
+        st.write(f"[相关链接]({row['url']})")
