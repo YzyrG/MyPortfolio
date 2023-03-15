@@ -8,7 +8,7 @@ import requests
 
 # ----------------------------------------首页展示NASA图片-----------------------------------------------#
 # 通过api拿到图片json文件并读取
-api_key = st.secrets["NASA_API"]
+api_key = "tnsxcGgQyfXgTMwhPTlBgSDBt0LNKyNOmzsr6FZd"
 url = "https://api.nasa.gov/planetary/apod?api_key={api_key}"
 headers = {'Connection': 'close'}
 
