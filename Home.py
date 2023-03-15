@@ -9,7 +9,8 @@ import requests
 # ----------------------------------------首页展示NASA图片-----------------------------------------------#
 # 通过api拿到图片json文件并读取
 api_key = "tnsxcGgQyfXgTMwhPTlBgSDBt0LNKyNOmzsr6FZd"
-url = "https://api.nasa.gov/planetary/apod?api_key={api_key}"
+url = "https://api.nasa.gov/planetary/apod?" \
+      f"api_key={api_key}"
 headers = {'Connection': 'close'}
 
 # 不显示InsecureRequestWarning警告
@@ -18,7 +19,7 @@ urllib3.disable_warnings()
 # 请求页面
 request = requests.get(url, headers=headers, verify=False)
 content_1 = request.json()
-print(content_1)
+# print(content_1)
 # 读取json
 date = content_1["date"]
 title = content_1['title']
