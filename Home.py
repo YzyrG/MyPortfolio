@@ -5,6 +5,7 @@ import urllib3
 import streamlit as st
 import pandas  # 用来读data.csv
 import requests
+from urllib3.exceptions import InsecureRequestWarning
 
 # ----------------------------------------首页展示NASA图片-----------------------------------------------#
 # 通过api拿到图片json文件并读取
@@ -14,29 +15,40 @@ url = "https://api.nasa.gov/planetary/apod?" \
 headers = {'Connection': 'close'}
 
 # 不显示InsecureRequestWarning警告
-urllib3.disable_warnings()
+urllib3.disable_warnings(InsecureRequestWarning)
 
 # 请求页面
 request = requests.get(url, headers=headers, verify=False)
 content_1 = request.json()
 # print(content_1)
 # 读取json
+
+# 判断是图片还是视频
+media_type = content_1["media_type"]
+
+img_filepath = ""
 date = content_1["date"]
 title = content_1['title']
-img_copyright = content_1['copyright']
 img_url = content_1["url"]
+img_copyright = content_1['copyright']
 explanation = content_1["explanation"]
 
-# 请求图片
-img = requests.get(img_url)
-content_2 = img.content
+# 是图片将图片保存至images文件夹
+if media_type == "image":
+    # 请求图片
+    img = requests.get(img_url)
+    content_2 = img.content
 
-# 将图片存入文件夹images
-img_filepath = f"images/{date}.jpg"
-with open(img_filepath, 'wb') as file:
-    file.write(content_2)
+    # 将图片存入文件夹images
+    img_filepath = f"images/{date}.jpg"
+    with open(img_filepath, 'wb') as file:
+        file.write(content_2)
 
+# 不是图片暂时显示2023-03-08.jpg
+else:
+    img_filepath = "images/2023-03-08.jpg"
 
+# print(img_filepath)
 # ------------------------------------------------UI设计--------------------------------------------------------#
 # 页面宽屏显示+修改page名称+增加page icon
 st.set_page_config(layout="wide", page_title="My Python Portfolio | ZYR ", page_icon="🌘")
