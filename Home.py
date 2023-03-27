@@ -30,7 +30,7 @@ img_filepath = ""
 date = content_1["date"]
 title = content_1['title']
 img_url = content_1["url"]
-img_copyright = content_1['copyright']
+# img_copyright = content_1['copyright']
 explanation = content_1["explanation"]
 
 # 是图片将图片保存至images文件夹
@@ -47,6 +47,7 @@ if media_type == "image":
 # 不是图片暂时显示2023-03-08.jpg
 else:
     img_filepath = "images/2023-03-08.jpg"
+    title = "Artificial Night Sky Brightness"
 
 # print(img_filepath)
 # ------------------------------------------------UI设计--------------------------------------------------------#
@@ -57,7 +58,7 @@ st.set_page_config(layout="wide", page_title="My Python Portfolio | ZYR ", page_
 st.image(img_filepath)
 
 # 图片来源说明
-st.text(f"{title} by {img_copyright} from NASA Astronomy Picture of the Day.")
+st.text(f"{title} from NASA Astronomy Picture of the Day.")
 
 # 作品展示
 content_2 = """
