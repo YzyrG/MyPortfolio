@@ -24,7 +24,8 @@ def send_email(message):
 
     # 代发人邮箱地址，代发人sender代替user_email发送邮件给接受邮件的receiver
     sender = "15683966878@163.com"
-    password = os.getenv("PASSWORD")
+    # password = os.getenv("PASSWORD")
+    password = "ZSDIBOHXCOCYCYOJ"
 
     receiver = "2456327328@qq.com"
     # 返回一个新的带有安全默认设置的上下文
